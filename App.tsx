@@ -1,13 +1,32 @@
-import { StatusBar } from 'expo-status-bar'
-import { Text, TouchableOpacity, View } from 'react-native'
+import * as React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Home, TagList } from './src/screens'
+
+const HomeStack = createNativeStackNavigator()
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="TagList" component={TagList} />
+    </HomeStack.Navigator>
+  )
+}
+
+const Tab = createBottomTabNavigator()
 
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-slate-100">
-      <TouchableOpacity className="p-6 bg-purple-600 rounded-lg">
-        <Text className="text-white font-bold">Hello Timing App</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          options={{ headerShown: false, title: '' }}
+          name="HomeScreen"
+          component={HomeStackScreen}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   )
 }
