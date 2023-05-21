@@ -1,2 +1,6 @@
 export * from './MoreIcon'
 export * from './ChevronRight'
+export * from './CodeBracket'
+export * from './Book'
+export * from './Monitor'
+export * from './BriefCase'

@@ -37,7 +37,7 @@ export default function App() {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: '#FAFAF4',
+      background: '#FAFAFF',
     },
   }
 

@@ -19,4 +19,4 @@ const Icon = ({ ...rest }) => {
   )
 }
 
-export const ChevronRight = styled(Icon)
+export const ChevronRightIcon = styled(Icon)
