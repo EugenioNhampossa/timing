@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Home, TagList } from './src/screens'
+import { ActivityForm, Home, TagList } from './src/screens'
 import { StatusBar } from 'expo-status-bar'
 import {
   Rubik_700Bold,
@@ -12,13 +12,17 @@ import {
 } from '@expo-google-fonts/rubik'
 import { useFonts } from 'expo-font'
 import colors from 'tailwindcss/colors'
+import { TabBar } from './src/components/TabBar'
+import { Analytics } from './src/screens/Analytics'
 
 const HomeStack = createNativeStackNavigator()
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name="Home" component={Home} />
+    <HomeStack.Navigator>
+      <HomeStack.Group screenOptions={{ headerShown: false }}>
+        <HomeStack.Screen name="Home" component={Home} />
+      </HomeStack.Group>
       <HomeStack.Screen name="TagList" component={TagList} />
     </HomeStack.Navigator>
   )
@@ -49,11 +53,21 @@ export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
       <StatusBar translucent style="auto" />
-      <Tab.Navigator>
+      <ActivityForm/>
+      <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
         <Tab.Screen
-          options={{ headerShown: false, title: '' }}
+          options={{ headerShown: false }}
           name="HomeScreen"
           component={HomeStackScreen}
+        />
+        <Tab.Screen
+          options={{ headerShown: false }}
+          name="OpenAddActivity"
+          component={HomeStackScreen}
+        />
+        <Tab.Screen
+          name="Analytics"
+          component={Analytics}
         />
       </Tab.Navigator>
     </NavigationContainer>

@@ -12,12 +12,12 @@ import { TimerCard } from '../components/TimerCard'
 import {
   BookIcon,
   BriefCaseIcon,
+  ClockOutlineIcon,
   CodeBracketIcon,
   MonitorIcon,
   MoreIcon,
 } from '../Icons'
 import { TagCard } from '../components/TagCard'
-import { ClockIcon } from '../Icons/Clock'
 import { ActivityCard } from '../components'
 
 const tags = [
@@ -48,17 +48,17 @@ const tags = [
   {
     id: 5,
     title: 'Other',
-    icon: <ClockIcon />,
+    icon: <ClockOutlineIcon />,
     color: 'bg-rose-500',
   },
 ]
 
-export const Home = () => {
+export const Home = ({navigation}) => {
   return (
     <>
       <SafeAreaView>
         <ScrollView>
-          <Container className="pt-7">
+          <Container className="pb-20 pt-7">
             <View className="mb-4 flex-row items-center justify-between">
               <Text className="text-xl font-bold">Task</Text>
               <TouchableOpacity activeOpacity={0.6}>
@@ -69,7 +69,10 @@ export const Home = () => {
             <View>
               <View className="mb-3 flex-row items-center justify-between">
                 <Text className="text-xl font-bold">Tags</Text>
-                <TouchableOpacity activeOpacity={0.6}>
+                <TouchableOpacity
+                  activeOpacity={0.6}
+                  onPress={() => navigation.navigate('TagList')}
+                >
                   <Text className="font-semibold">See all</Text>
                 </TouchableOpacity>
               </View>

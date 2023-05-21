@@ -1,10 +1,10 @@
 import React from 'react'
 import { SafeAreaView, Text } from 'react-native'
 
-export const TagList = () => {
+export const Analytics = () => {
   return (
     <SafeAreaView>
-      <Text>TagList</Text>
+      <Text>Analytics</Text>
     </SafeAreaView>
   )
 }
