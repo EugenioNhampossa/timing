@@ -1,8 +1,16 @@
 import * as React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Home, TagList } from './src/screens'
+import { StatusBar } from 'expo-status-bar'
+import {
+  Rubik_700Bold,
+  Rubik_400Regular,
+  Rubik_600SemiBold,
+  Rubik_500Medium,
+} from '@expo-google-fonts/rubik'
+import { useFonts } from 'expo-font'
 
 const HomeStack = createNativeStackNavigator()
 
@@ -18,8 +26,27 @@ function HomeStackScreen() {
 const Tab = createBottomTabNavigator()
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Rubik_400Regular,
+    Rubik_500Medium,
+    Rubik_600SemiBold,
+    Rubik_700Bold,
+  })
+
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: '#FAFAF4',
+    },
+  }
+
+  if (!fontsLoaded) {
+    return null
+  }
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
+      <StatusBar translucent style="auto" />
       <Tab.Navigator>
         <Tab.Screen
           options={{ headerShown: false, title: '' }}
