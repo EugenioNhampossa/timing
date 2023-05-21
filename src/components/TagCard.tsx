@@ -11,11 +11,12 @@ type tagCardProps = {
 
 export const TagCard = ({ title, icon, color }: tagCardProps) => {
   return (
-    <TouchableOpacity activeOpacity={0.8}>
-      <View className="mr-4 items-center rounded-lg bg-white px-7 py-4">
-        <View className={`mb-2 rounded-full ${color}`}>{icon}</View>
-        <Text className="text-sm font-semibold">{title}</Text>
-      </View>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      className="shadow-md mr-4 items-center rounded-lg bg-white px-7 py-4"
+    >
+      <View className={`mb-2 rounded-full p-4 ${color}`}>{icon}</View>
+      <Text className="text-sm font-semibold">{title}</Text>
     </TouchableOpacity>
   )
 }

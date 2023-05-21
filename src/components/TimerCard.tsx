@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { Container } from './Container'
 import { ChevronRightIcon } from '../Icons'
 import ring from '../assets/ring.png'
 
 export const TimerCard = () => {
   return (
-    <>
+    <TouchableOpacity activeOpacity={0.8} className="mb-5">
       <Container className="rounded-xl bg-black px-4 py-6 ">
         <View className="mb-3 flex-row items-center justify-between">
           <Text className="text-3xl font-bold text-white">00:32:10</Text>
@@ -17,6 +17,6 @@ export const TimerCard = () => {
           <Text className="text-lg text-white">{'Rasion Project'}</Text>
         </View>
       </Container>
-    </>
+    </TouchableOpacity>
   )
 }

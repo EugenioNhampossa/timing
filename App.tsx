@@ -11,6 +11,7 @@ import {
   Rubik_500Medium,
 } from '@expo-google-fonts/rubik'
 import { useFonts } from 'expo-font'
+import colors from 'tailwindcss/colors'
 
 const HomeStack = createNativeStackNavigator()
 
@@ -37,13 +38,14 @@ export default function App() {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: '#FAFAFF',
+      background: colors.slate[100],
     },
   }
 
   if (!fontsLoaded) {
     return null
   }
+
   return (
     <NavigationContainer theme={MyTheme}>
       <StatusBar translucent style="auto" />
