@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Container } from '../components/Container'
+import { Container } from '../components/Layout/Container'
 import { TimerCard } from '../components/TimerCard'
 import {
   BookIcon,
@@ -94,7 +94,10 @@ export const Home = ({ navigation }) => {
               <View>
                 <View className="mb-3 flex-row items-center justify-between">
                   <Text className="text-xl font-bold">Activities</Text>
-                  <TouchableOpacity activeOpacity={0.6}>
+                  <TouchableOpacity
+                    activeOpacity={0.6}
+                    onPress={() => navigation.navigate('ActivityLIst')}
+                  >
                     <Text className="font-semibold">See all</Text>
                   </TouchableOpacity>
                 </View>

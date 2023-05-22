@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import { Container } from './Container'
+import { Container } from './Layout/Container'
 import { ChevronRightIcon } from '../Icons'
 import ring from '../assets/ring.png'
 import { useAppDispatch } from '../hooks'

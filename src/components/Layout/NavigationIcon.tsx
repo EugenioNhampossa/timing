@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClockIcon } from '../Icons/Clock'
+import { ClockIcon } from '../../Icons/Clock'
 import {
   ClockOutlineIcon,
   HomeIcon,
@@ -8,9 +8,9 @@ import {
   PieChartIcon,
   PieChartOutlineIcon,
   PlusIcon,
-} from '../Icons'
+} from '../../Icons'
 import { View } from 'react-native'
-import { ListOutlineIcon } from '../Icons/ListOutline'
+import { ListOutlineIcon } from '../../Icons/ListOutline'
 
 type navIconProps = {
   route: string
@@ -25,7 +25,7 @@ export const NavigationIcon = ({ route, isFocused }: navIconProps) => {
     case 'OpenAddActivity':
       return (
         <View className="h-12 -translate-y-6">
-          <PlusIcon className=" text-slate-500 " />
+          <PlusIcon className=" text-purple-600 " />
         </View>
       )
     case 'Analytics':

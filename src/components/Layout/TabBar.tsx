@@ -2,8 +2,8 @@ import React from 'react'
 
 import { View, TouchableOpacity } from 'react-native'
 import { NavigationIcon } from './NavigationIcon'
-import { useAppDispatch } from '../hooks'
-import { modal_actions } from '../store/modal.slice'
+import { useAppDispatch } from '../../hooks'
+import { modal_actions } from '../../store/modal.slice'
 
 export const TabBar = ({ state, descriptors, navigation }: any) => {
   const dispatch = useAppDispatch()

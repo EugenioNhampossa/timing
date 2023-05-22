@@ -12,7 +12,7 @@ import {
 } from '@expo-google-fonts/rubik'
 import { useFonts } from 'expo-font'
 import colors from 'tailwindcss/colors'
-import { TabBar } from './src/components/TabBar'
+import { TabBar } from './src/components/Layout/TabBar'
 import { Analytics } from './src/screens/Analytics'
 import { Provider } from 'react-redux'
 import store from './src/store'

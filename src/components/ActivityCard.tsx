@@ -25,7 +25,7 @@ const StyledActivityCard = ({ ...rest }) => {
             </View>
           </View>
         </View>
-        <TouchableOpacity activeOpacity={0.7} className="">
+        <TouchableOpacity activeOpacity={0.7}>
           <PlayIcon />
         </TouchableOpacity>
       </View>

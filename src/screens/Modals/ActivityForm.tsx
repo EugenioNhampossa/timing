@@ -6,6 +6,8 @@ import {
   Text,
   TouchableOpacity,
   Animated,
+  TextInput,
+  KeyboardAvoidingView,
 } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { Container } from '../../components'
@@ -30,18 +32,53 @@ export const ActivityForm = () => {
         className="flex-1"
       />
       <View
-        
-        className="absolute bottom-0 w-full items-center rounded-t-[30px] bg-white py-3"
-        style={{ height: windowHeight * 0.8 }}
+        className="absolute bottom-0 w-full items-center rounded-t-[30px] bg-white py-3 shadow-2xl shadow-black"
+        style={{ height: windowHeight * 0.55 }}
       >
         <Container className="px-5">
-          <View className="mb-4 flex-row justify-end py-4">
+          <View className="flex-row justify-end py-3">
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => dispatch(modal_actions.toggleActivityForm())}
             >
               <CloseIcon className="text-gray-500" />
             </TouchableOpacity>
+          </View>
+          <View className="mb-4 w-full">
+            <Text className="text-xl font-bold">New Activity</Text>
+          </View>
+          <View>
+            <View className="mb-2">
+              <Text className="py-1">Activity Name</Text>
+              <TextInput
+                className="rounded-lg bg-slate-200 px-3 py-1 focus:border-2 focus:border-gray-400 "
+                placeholder="Activity Name"
+              />
+            </View>
+            <View className="mb-2">
+              <Text className="py-1">Select category</Text>
+              <TextInput
+                className="rounded-lg bg-slate-200 px-3 py-1 focus:border-2 focus:border-gray-400"
+                placeholder="Category name"
+              />
+            </View>
+            <View>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                className="mt-4 items-center rounded-lg bg-purple-600 p-3"
+              >
+                <Text className="font-semibold text-white">Add Activity</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                className="mt-4 items-center rounded-lg p-2"
+                onPress={() => dispatch(modal_actions.toggleActivityForm())}
+              >
+                <Text className="text-lg font-semibold text-gray-600">
+                  Quit
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Container>
       </View>
