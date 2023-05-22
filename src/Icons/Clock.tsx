@@ -7,7 +7,7 @@ const Icon = ({ ...rest }) => {
     <Svg
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="h-8 w-8"
+      className="h-7 w-7"
       {...rest}
     >
       <Path

@@ -17,6 +17,8 @@ import { Analytics } from './src/screens/Analytics'
 import { Provider } from 'react-redux'
 import store from './src/store'
 import { TimerModal } from './src/screens/Modals/TimerModal'
+import { Historic } from './src/screens/Historic'
+import { ActivityList } from './src/screens/ActivityList'
 
 const HomeStack = createNativeStackNavigator()
 
@@ -58,18 +60,20 @@ export default function App() {
       <NavigationContainer theme={MyTheme}>
         <StatusBar translucent style="auto" />
         <ActivityForm />
-        <TimerModal/>
+        <TimerModal />
         <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
           <Tab.Screen
             options={{ headerShown: false }}
             name="HomeScreen"
             component={HomeStackScreen}
           />
+          <Tab.Screen name="ActivityLIst" component={ActivityList} />
           <Tab.Screen
             options={{ headerShown: false }}
             name="OpenAddActivity"
             component={HomeStackScreen}
           />
+          <Tab.Screen name="Historic" component={Historic} />
           <Tab.Screen name="Analytics" component={Analytics} />
         </Tab.Navigator>
       </NavigationContainer>

@@ -55,14 +55,11 @@ const tags = [
 ]
 
 export const Home = ({ navigation }) => {
-  const isActivityFormOpen = useAppSelector(
-    (state) => state.modals.isActivityFormOpen
-  )
   return (
     <>
       <SafeAreaView>
         <ScrollView>
-          <Container className={`pb-20 pt-7 ${isActivityFormOpen && 'opacity-50 bg-black'}`}>
+          <Container className={`pb-20 pt-7`}>
             <View className="mb-4 flex-row items-center justify-between">
               <Text className="text-xl font-bold">Task</Text>
               <TouchableOpacity activeOpacity={0.7}>

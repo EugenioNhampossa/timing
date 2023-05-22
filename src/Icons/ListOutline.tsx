@@ -9,21 +9,16 @@ const Icon = ({ ...rest }) => {
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      className="h-7 w-7"
+      className="h-7 w-7 text-black"
       {...rest}
     >
       <Path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"
-      />
-      <Path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"
+        d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
       />
     </Svg>
   )
 }
 
-export const PieChartOutlineIcon = styled(Icon)
+export const ListOutlineIcon = styled(Icon)
