@@ -14,6 +14,8 @@ import { useFonts } from 'expo-font'
 import colors from 'tailwindcss/colors'
 import { TabBar } from './src/components/TabBar'
 import { Analytics } from './src/screens/Analytics'
+import { Provider } from 'react-redux'
+import store from './src/store'
 
 const HomeStack = createNativeStackNavigator()
 
@@ -51,25 +53,24 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer theme={MyTheme}>
-      <StatusBar translucent style="auto" />
-      <ActivityForm/>
-      <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
-        <Tab.Screen
-          options={{ headerShown: false }}
-          name="HomeScreen"
-          component={HomeStackScreen}
-        />
-        <Tab.Screen
-          options={{ headerShown: false }}
-          name="OpenAddActivity"
-          component={HomeStackScreen}
-        />
-        <Tab.Screen
-          name="Analytics"
-          component={Analytics}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer theme={MyTheme}>
+        <StatusBar translucent style="auto" />
+        <ActivityForm />
+        <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
+          <Tab.Screen
+            options={{ headerShown: false }}
+            name="HomeScreen"
+            component={HomeStackScreen}
+          />
+          <Tab.Screen
+            options={{ headerShown: false }}
+            name="OpenAddActivity"
+            component={HomeStackScreen}
+          />
+          <Tab.Screen name="Analytics" component={Analytics} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   )
 }

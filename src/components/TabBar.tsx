@@ -1,9 +1,12 @@
 import React from 'react'
 
-import { View, Pressable, TouchableOpacity, Alert } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import { NavigationIcon } from './NavigationIcon'
+import { useAppDispatch } from '../hooks'
+import { modal_actions } from '../store/modal.slice'
 
 export const TabBar = ({ state, descriptors, navigation }: any) => {
+  const dispatch = useAppDispatch()
   return (
     <View className="absolute bottom-0 h-20 w-full flex-row justify-between  rounded-t-[20px] bg-white p-4 shadow-2xl shadow-black">
       {state.routes.map((route: any, index: number) => {
@@ -28,7 +31,7 @@ export const TabBar = ({ state, descriptors, navigation }: any) => {
               navigation.navigate(route.name)
             }
           } else {
-            alert('Tem que abrir modal')
+            dispatch(modal_actions.toggleActivityForm())
           }
         }
 

@@ -19,6 +19,7 @@ import {
 } from '../Icons'
 import { TagCard } from '../components/TagCard'
 import { ActivityCard } from '../components'
+import { useAppSelector } from '../hooks'
 
 const tags = [
   {
@@ -53,15 +54,18 @@ const tags = [
   },
 ]
 
-export const Home = ({navigation}) => {
+export const Home = ({ navigation }) => {
+  const isActivityFormOpen = useAppSelector(
+    (state) => state.modals.isActivityFormOpen
+  )
   return (
     <>
       <SafeAreaView>
         <ScrollView>
-          <Container className="pb-20 pt-7">
+          <Container className={`pb-20 pt-7 ${isActivityFormOpen && 'opacity-50 bg-black'}`}>
             <View className="mb-4 flex-row items-center justify-between">
               <Text className="text-xl font-bold">Task</Text>
-              <TouchableOpacity activeOpacity={0.6}>
+              <TouchableOpacity activeOpacity={0.7}>
                 <MoreIcon className="text-gray-500" />
               </TouchableOpacity>
             </View>

@@ -1,40 +1,49 @@
 import React from 'react'
-import { useState } from 'react'
 import {
-  Image,
   Modal,
   View,
-  Button,
-  Text,
-  StyleSheet,
   Dimensions,
+  Text,
   TouchableOpacity,
+  Animated,
 } from 'react-native'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { Container } from '../../components'
+import { modal_actions } from '../../store/modal.slice'
+import { CloseIcon } from '../../Icons'
 
 export const ActivityForm = () => {
   const windowHeight = Dimensions.get('window').height
-  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false)
-
-  const handleOpenBottomSheet = () => {
-    setIsBottomSheetOpen(true)
-  }
-
-  const handleCloseBottomSheet = () => {
-    setIsBottomSheetOpen(false)
-  }
+  const isActivityFormOpen = useAppSelector(
+    (state) => state.modals.isActivityFormOpen
+  )
+  const dispatch = useAppDispatch()
 
   return (
     <Modal
       animationType="slide"
       transparent={true}
-      visible={isBottomSheetOpen}
-      onRequestClose={handleCloseBottomSheet}
+      visible={isActivityFormOpen}
     >
+      <TouchableOpacity
+        onPress={() => dispatch(modal_actions.toggleActivityForm())}
+        className="flex-1"
+      />
       <View
+        
         className="absolute bottom-0 w-full items-center rounded-t-[30px] bg-white py-3"
-        style={{ height: windowHeight * 0.94 }}
+        style={{ height: windowHeight * 0.8 }}
       >
-        <View className="p-0.5 rounded-lg bg-slate-300 w-20" />
+        <Container className="px-5">
+          <View className="mb-4 flex-row justify-end py-4">
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => dispatch(modal_actions.toggleActivityForm())}
+            >
+              <CloseIcon className="text-gray-500" />
+            </TouchableOpacity>
+          </View>
+        </Container>
       </View>
     </Modal>
   )
