@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ActivityForm, Home, TagList } from './src/screens'
 import { StatusBar } from 'expo-status-bar'
+import { Text, TouchableOpacity, View } from 'react-native'
 import {
   Rubik_700Bold,
   Rubik_400Regular,
@@ -19,6 +20,7 @@ import store from './src/store'
 import { TimerModal } from './src/screens/Modals/TimerModal'
 import { Historic } from './src/screens/Historic'
 import { ActivityList } from './src/screens/ActivityList'
+import { Header } from './src/components/Layout/Header'
 
 const HomeStack = createNativeStackNavigator()
 
@@ -28,7 +30,13 @@ function HomeStackScreen() {
       <HomeStack.Group screenOptions={{ headerShown: false }}>
         <HomeStack.Screen name="Home" component={Home} />
       </HomeStack.Group>
-      <HomeStack.Screen name="TagList" component={TagList} />
+      <HomeStack.Screen
+        name="TagList"
+        component={TagList}
+        options={{
+          header: () => <Header title="Tag List" />,
+        }}
+      />
     </HomeStack.Navigator>
   )
 }
@@ -67,14 +75,32 @@ export default function App() {
             name="HomeScreen"
             component={HomeStackScreen}
           />
-          <Tab.Screen name="ActivityLIst" component={ActivityList} />
+          <Tab.Screen
+            name="ActivityLIst"
+            component={ActivityList}
+            options={{
+              header: () => <Header title="Activity" />,
+            }}
+          />
           <Tab.Screen
             options={{ headerShown: false }}
             name="OpenAddActivity"
             component={HomeStackScreen}
           />
-          <Tab.Screen name="Historic" component={Historic} />
-          <Tab.Screen name="Analytics" component={Analytics} />
+          <Tab.Screen
+            name="Historic"
+            component={Historic}
+            options={{
+              header: () => <Header title="History" />,
+            }}
+          />
+          <Tab.Screen
+            name="Analytics"
+            component={Analytics}
+            options={{
+              header: () => <Header title="Analytics" />,
+            }}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>
