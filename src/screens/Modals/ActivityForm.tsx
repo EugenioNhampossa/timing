@@ -35,6 +35,7 @@ export const ActivityForm = () => {
         className="absolute bottom-0 w-full items-center rounded-t-[30px] bg-white py-3 shadow-2xl shadow-black"
         style={{ height: windowHeight * 0.55 }}
       >
+        <View className="bg-gray-400 p-[1.5px] rounded-lg w-16"/>
         <Container className="px-5">
           <View className="flex-row justify-end py-3">
             <TouchableOpacity
