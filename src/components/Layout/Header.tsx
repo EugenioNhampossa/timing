@@ -13,7 +13,7 @@ export const Header = ({ title, rightElement }: headerProps) => {
   const navigation = useNavigation()
   return (
     <SafeAreaView>
-      <View className="flex-row items-center justify-between py-4 px-3 bg-white">
+      <View className="flex-row items-center  justify-between bg-white px-3 py-4 border-b-[0.5px] border-b-gray-300">
         <TouchableOpacity
           activeOpacity={0.4}
           className="rounded-full"
