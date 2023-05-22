@@ -16,6 +16,7 @@ import { TabBar } from './src/components/TabBar'
 import { Analytics } from './src/screens/Analytics'
 import { Provider } from 'react-redux'
 import store from './src/store'
+import { TimerModal } from './src/screens/Modals/TimerModal'
 
 const HomeStack = createNativeStackNavigator()
 
@@ -57,6 +58,7 @@ export default function App() {
       <NavigationContainer theme={MyTheme}>
         <StatusBar translucent style="auto" />
         <ActivityForm />
+        <TimerModal/>
         <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
           <Tab.Screen
             options={{ headerShown: false }}
