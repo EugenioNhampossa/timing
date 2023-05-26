@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { Container } from '../../components'
 import { modal_actions } from '../../store/modal.slice'
 import { CloseIcon, PauseIcon, StopIcon } from '../../Icons'
 import ring from '../../assets/ring.png'
@@ -31,7 +30,7 @@ export const TimerModal = () => {
         style={{ height: windowHeight * 0.97 }}
       >
         <View className="w-16 rounded-lg bg-gray-400 p-[1.5px]" />
-        <Container className="px-5">
+        <View className="container px-5">
           <View className="mb-4 flex-row justify-end py-4">
             <TouchableOpacity
               activeOpacity={0.7}
@@ -70,7 +69,7 @@ export const TimerModal = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </Container>
+        </View>
       </View>
     </Modal>
   )

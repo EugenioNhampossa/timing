@@ -11,7 +11,7 @@ const StyledActivityCard = ({ ...rest }) => {
         {...rest}
       >
         <View>
-          <View className="flex-row items-center gap-4 rounded-lg bg-white">
+          <View className="flex-row items-center gap-4 rounded-lg bg-transparent">
             <View className={`mb-2 rounded-full bg-green-500 p-4`}>
               <BookIcon />
             </View>

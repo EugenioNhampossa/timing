@@ -8,11 +8,9 @@ import {
   TextInput,
 } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { Container } from '../../components'
 import { modal_actions } from '../../store/modal.slice'
 import { CloseIcon } from '../../Icons'
 import colors from 'tailwindcss/colors'
-
 
 export const ActivityForm = () => {
   const windowHeight = Dimensions.get('window').height
@@ -36,7 +34,7 @@ export const ActivityForm = () => {
         style={{ height: windowHeight * 0.55 }}
       >
         <View className="w-16 rounded-lg bg-gray-400 p-[1.5px]" />
-        <Container className="px-5">
+        <View className="container px-5">
           <View className="flex-row justify-end py-3">
             <TouchableOpacity
               activeOpacity={0.7}
@@ -68,10 +66,11 @@ export const ActivityForm = () => {
             <View>
               <TouchableOpacity
                 activeOpacity={0.7}
-                className="mt-4 items-center rounded-lg bg-purple-600 p-3"
+                className="mt-4 items-center rounded-lg p-3 bg-purple-600"
               >
                 <Text className="font-semibold text-white">Add Activity</Text>
               </TouchableOpacity>
+
               <TouchableOpacity
                 activeOpacity={0.7}
                 className="mt-4 items-center rounded-lg p-2"
@@ -83,7 +82,7 @@ export const ActivityForm = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </Container>
+        </View>
       </View>
     </Modal>
   )

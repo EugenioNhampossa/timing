@@ -19,7 +19,6 @@ import {
 } from '../Icons'
 import { TagCard } from '../components/TagCard'
 import { ActivityCard } from '../components'
-import { useAppSelector } from '../hooks'
 
 export const tags = [
   {
