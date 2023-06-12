@@ -51,7 +51,7 @@ export const ActivityForm = () => {
               <Text className="py-1">Activity Name</Text>
               <TextInput
                 cursorColor={colors.gray[500]}
-                className="rounded-lg bg-slate-200 px-3 py-1 focus:border-2 focus:border-gray-400 "
+                className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400 "
                 placeholder="Activity Name"
               />
             </View>
@@ -59,14 +59,14 @@ export const ActivityForm = () => {
               <Text className="py-1">Select category</Text>
               <TextInput
                 cursorColor={colors.gray[500]}
-                className="rounded-lg bg-slate-200 px-3 py-1 focus:border-2 focus:border-gray-400"
+                className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400"
                 placeholder="Category name"
               />
             </View>
             <View>
               <TouchableOpacity
                 activeOpacity={0.7}
-                className="mt-4 items-center rounded-lg p-3 bg-purple-600"
+                className="mt-4 items-center rounded-lg bg-purple-600 p-3"
               >
                 <Text className="font-semibold text-white">Add Activity</Text>
               </TouchableOpacity>

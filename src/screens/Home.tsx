@@ -51,18 +51,6 @@ export const tags = [
     icon: <ClockOutlineIcon />,
     color: 'bg-rose-500',
   },
-  {
-    id: 6,
-    title: 'Other',
-    icon: <ClockOutlineIcon />,
-    color: 'bg-rose-500',
-  },
-  {
-    id: 7,
-    title: 'Other',
-    icon: <ClockOutlineIcon />,
-    color: 'bg-rose-500',
-  },
 ]
 
 export const Home = ({ navigation }) => {
