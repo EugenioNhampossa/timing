@@ -22,7 +22,7 @@ export const NavigationIcon = ({ route, isFocused }: navIconProps) => {
     case 'HomeScreen':
       if (isFocused) return <HomeIcon className="text-slate-800" />
       else return <HomeOutlineIcon className="text-slate-800" />
-    case 'OpenAddActivity':
+    case 'OpenAddTask':
       return (
         <View className="h-12 -translate-y-6">
           <PlusIcon className=" text-purple-600 " />
@@ -36,7 +36,7 @@ export const NavigationIcon = ({ route, isFocused }: navIconProps) => {
       if (isFocused) return <ClockIcon className="text-slate-800" />
       else return <ClockOutlineIcon className="text-slate-800" />
 
-    case 'ActivityLIst':
+    case 'TaskLIst':
       if (isFocused) return <ListIcon className="text-slate-800" />
       else return <ListOutlineIcon className="text-slate-800" />
 

@@ -6,12 +6,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { ActivityCard, Container } from '../components'
+import { TaskCard, Container } from '../components'
 import { FunnelIcon, MagnifyingGlassIcon } from '../Icons'
 import { tags } from './Home'
 import colors from 'tailwindcss/colors'
 
-export const ActivityList = () => {
+export const TaskList = () => {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -33,7 +33,7 @@ export const ActivityList = () => {
           </View>
           <View className="mt-5">
             {tags.map((item, key) => (
-              <ActivityCard key={'#Act' + item.id} />
+              <TaskCard key={'#Act' + item.id} />
             ))}
           </View>
         </Container>

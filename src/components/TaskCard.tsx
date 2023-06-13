@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { BookIcon, PlayIcon } from '../Icons'
 
-const StyledActivityCard = ({ ...rest }) => {
+const StyledTaskCard = ({ ...rest }) => {
   return (
     <>
       <View
@@ -33,4 +33,4 @@ const StyledActivityCard = ({ ...rest }) => {
   )
 }
 
-export const ActivityCard = styled(StyledActivityCard)
+export const TaskCard = styled(StyledTaskCard)

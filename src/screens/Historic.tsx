@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { ActivityCard, Container, TrackedTimeCard } from '../components'
+import { TaskCard, Container, TrackedTimeCard } from '../components'
 import { FunnelIcon, MagnifyingGlassIcon } from '../Icons'
 import { tags } from './Home'
 import colors from 'tailwindcss/colors'
@@ -17,7 +17,7 @@ export const Historic = () => {
       <ScrollView>
         <Container className="pb-20 pt-4">
           <View className="flex-row items-center justify-between">
-            <View className="flex-auto flex-row items-center rounded-lg border-2 bg-white px-2 border-transparent focus:border-gray-400">
+            <View className="flex-auto flex-row items-center rounded-lg border-2 border-transparent bg-white px-2 focus:border-gray-400">
               <MagnifyingGlassIcon />
               <TextInput
                 cursorColor={colors.gray[500]}

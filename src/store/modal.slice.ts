@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 interface ModalsState {
-  isActivityFormOpen: boolean
+  isTaskFormOpen: boolean
   isTimerModalOpen: boolean
 }
 
 const initialState: ModalsState = {
-  isActivityFormOpen: false,
+  isTaskFormOpen: false,
   isTimerModalOpen: false,
 }
 
@@ -14,8 +14,8 @@ const uiSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    toggleActivityForm(state) {
-      state.isActivityFormOpen = !state.isActivityFormOpen
+    toggleTaskForm(state) {
+      state.isTaskFormOpen = !state.isTaskFormOpen
     },
     toggleTImerModal(state) {
       state.isTimerModalOpen = !state.isTimerModalOpen

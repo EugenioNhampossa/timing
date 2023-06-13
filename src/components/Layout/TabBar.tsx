@@ -21,7 +21,7 @@ export const TabBar = ({ state, descriptors, navigation }: any) => {
         const isFocused = state.index === index
 
         const onPress = () => {
-          if (label !== 'OpenAddActivity') {
+          if (label !== 'OpenAddTask') {
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,
@@ -31,7 +31,7 @@ export const TabBar = ({ state, descriptors, navigation }: any) => {
               navigation.navigate(route.name)
             }
           } else {
-            dispatch(modal_actions.toggleActivityForm())
+            dispatch(modal_actions.toggleTaskForm())
           }
         }
 

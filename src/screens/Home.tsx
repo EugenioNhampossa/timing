@@ -18,7 +18,7 @@ import {
   MoreIcon,
 } from '../Icons'
 import { TagCard } from '../components/TagCard'
-import { ActivityCard } from '../components'
+import { TaskCard } from '../components'
 
 export const tags = [
   {
@@ -60,7 +60,7 @@ export const Home = ({ navigation }) => {
         <ScrollView>
           <Container className="pb-20 pt-7">
             <View className="mb-4 flex-row items-center justify-between">
-              <Text className="text-xl font-bold">Task</Text>
+              <Text className="text-xl font-bold">Current task</Text>
               <TouchableOpacity activeOpacity={0.7}>
                 <MoreIcon className="text-gray-500" />
               </TouchableOpacity>
@@ -92,16 +92,16 @@ export const Home = ({ navigation }) => {
               />
               <View>
                 <View className="mb-3 flex-row items-center justify-between">
-                  <Text className="text-xl font-bold">Activities</Text>
+                  <Text className="text-xl font-bold">Tasks</Text>
                   <TouchableOpacity
                     activeOpacity={0.6}
-                    onPress={() => navigation.navigate('ActivityLIst')}
+                    onPress={() => navigation.navigate('TaskLIst')}
                   >
                     <Text className="font-semibold">See all</Text>
                   </TouchableOpacity>
                 </View>
                 {tags.map((item, key) => (
-                  <ActivityCard key={'#Act' + item.id} />
+                  <TaskCard key={'#Act' + item.id} />
                 ))}
               </View>
             </View>
