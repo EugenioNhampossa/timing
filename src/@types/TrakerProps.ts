@@ -1,6 +1,5 @@
-export type TrakerProps = {
+export type TrackerProps = {
   _id: string
-  id_task: string
   start_time: Date
   end_time: Date
 }

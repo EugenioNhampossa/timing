@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Modal,
   View,
@@ -6,16 +6,41 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { modal_actions } from '../../store/modal.slice'
 import { CloseIcon } from '../../Icons'
 import colors from 'tailwindcss/colors'
+import { getRealm } from '../../db/realm'
+import uuid from 'react-native-uuid'
 
 export const TaskForm = () => {
   const windowHeight = Dimensions.get('window').height
   const isTaskFormOpen = useAppSelector((state) => state.modals.isTaskFormOpen)
   const dispatch = useAppDispatch()
+
+  const [tag, setTag] = useState<string>()
+  const [title, setTitle] = useState<string>()
+
+  async function handleCreateNewTask() {
+    const realm = await getRealm()
+    try {
+      realm.write(() => {
+        realm.create('Task', {
+          _id: uuid.v4(),
+          title,
+          tag_id: tag,
+        })
+      })
+      Alert.alert('Success', 'Task created')
+    } catch (error) {
+      Alert.alert('Error', 'Something went rong')
+      console.log(error)
+    } finally {
+      realm.close();
+    }
+  }
 
   return (
     <Modal animationType="slide" transparent={true} visible={isTaskFormOpen}>
@@ -47,14 +72,16 @@ export const TaskForm = () => {
                 cursorColor={colors.gray[500]}
                 className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400 "
                 placeholder="Task Name"
+                onChangeText={setTitle}
               />
             </View>
             <View className="mb-2">
-              <Text className="py-1">Select category</Text>
+              <Text className="py-1">Select a tag</Text>
               <TextInput
                 cursorColor={colors.gray[500]}
                 className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400"
                 placeholder="Category name"
+                onChangeText={setTag}
               />
             </View>
             <View>

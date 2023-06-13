@@ -20,6 +20,7 @@ import { TimerModal } from './src/screens/Modals/TimerModal'
 import { Historic } from './src/screens/Historic'
 import { TaskList } from './src/screens/TaskList'
 import { Header } from './src/components/Layout/Header'
+import { createRealmContext } from '@realm/react'
 
 const HomeStack = createNativeStackNavigator()
 

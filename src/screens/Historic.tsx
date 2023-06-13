@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   SafeAreaView,
   ScrollView,
@@ -6,12 +6,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { TaskCard, Container, TrackedTimeCard } from '../components'
+import { Container, TrackedTimeCard } from '../components'
 import { FunnelIcon, MagnifyingGlassIcon } from '../Icons'
-import { tags } from './Home'
 import colors from 'tailwindcss/colors'
+import { TrackerProps } from '../@types'
 
 export const Historic = () => {
+  const [trakers, setTrackers] = useState<TrackerProps[]>()
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -32,8 +34,8 @@ export const Historic = () => {
             </TouchableOpacity>
           </View>
           <View className="mt-5">
-            {tags.map((item, key) => (
-              <TrackedTimeCard key={'#Act' + item.id} />
+            {trakers.map((item, key) => (
+              <TrackedTimeCard key={'#Act' + item._id + key} />
             ))}
           </View>
         </Container>

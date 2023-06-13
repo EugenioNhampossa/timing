@@ -3,8 +3,9 @@ import { SafeAreaView, ScrollView, TextInput, View } from 'react-native'
 import { Container } from '../components'
 import { MagnifyingGlassIcon } from '../Icons'
 import colors from 'tailwindcss/colors'
-import { tags } from './Home'
 import { TagCard } from '../components/TagCard'
+import { TagProps } from '../@types'
+import { TAGS } from '../utils/tags'
 
 export const TagList = () => {
   return (
@@ -21,10 +22,10 @@ export const TagList = () => {
             </View>
           </View>
           <View className="mt-5 flex-row flex-wrap justify-center">
-            {tags.map((item, key) => (
+            {TAGS.map((item: TagProps, key) => (
               <View className="mt-5">
                 <TagCard
-                  key={'#' + item.id}
+                  key={'#tag' + item.id + key}
                   icon={item.icon}
                   title={item.title}
                   color={item.color}

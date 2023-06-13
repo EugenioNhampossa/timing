@@ -1,6 +1,6 @@
 export type TaskProps = {
   _id: string
-  id_tag: string
+  tag_id: string
   title: string
-  nrPlayed: number
+  nrPlayed?: number
 }

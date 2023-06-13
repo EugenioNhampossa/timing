@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   View,
   Text,
@@ -13,9 +13,11 @@ import { TagCard } from '../components/TagCard'
 import { TaskCard } from '../components'
 import { MoreIcon } from '../Icons'
 import { TAGS } from '../utils/tags'
-
+import { TaskProps } from '../@types'
 
 export const Home = ({ navigation }) => {
+  const [tasks, setTask] = useState<TaskProps[]>([])
+
   return (
     <>
       <SafeAreaView>
@@ -62,8 +64,8 @@ export const Home = ({ navigation }) => {
                     <Text className="font-semibold">See all</Text>
                   </TouchableOpacity>
                 </View>
-                {[].map((item, key) => (
-                  <TaskCard key={'#Act' + item.id} />
+                {tasks.map((item, key) => (
+                  <TaskCard key={'#Act' + item._id} />
                 ))}
               </View>
             </View>
