@@ -9,49 +9,11 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Container } from '../components/Layout/Container'
 import { TimerCard } from '../components/TimerCard'
-import {
-  BookIcon,
-  BriefCaseIcon,
-  ClockOutlineIcon,
-  CodeBracketIcon,
-  MonitorIcon,
-  MoreIcon,
-} from '../Icons'
 import { TagCard } from '../components/TagCard'
 import { TaskCard } from '../components'
+import { MoreIcon } from '../Icons'
+import { TAGS } from '../utils/tags'
 
-export const tags = [
-  {
-    id: 1,
-    title: 'Coding',
-    icon: <CodeBracketIcon />,
-    color: 'bg-red-500',
-  },
-  {
-    id: 2,
-    title: 'Reading',
-    icon: <BookIcon />,
-    color: 'bg-green-500',
-  },
-  {
-    id: 3,
-    title: 'Design',
-    icon: <MonitorIcon />,
-    color: 'bg-purple-500',
-  },
-  {
-    id: 4,
-    title: 'Working',
-    icon: <BriefCaseIcon />,
-    color: 'bg-orange-500',
-  },
-  {
-    id: 5,
-    title: 'Other',
-    icon: <ClockOutlineIcon />,
-    color: 'bg-rose-500',
-  },
-]
 
 export const Home = ({ navigation }) => {
   return (
@@ -79,7 +41,7 @@ export const Home = ({ navigation }) => {
               <FlatList
                 className="mb-3"
                 horizontal
-                data={tags}
+                data={TAGS}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
                   <TagCard
@@ -100,7 +62,7 @@ export const Home = ({ navigation }) => {
                     <Text className="font-semibold">See all</Text>
                   </TouchableOpacity>
                 </View>
-                {tags.map((item, key) => (
+                {[].map((item, key) => (
                   <TaskCard key={'#Act' + item.id} />
                 ))}
               </View>
