@@ -7,23 +7,57 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
+  ActivityIndicator,
 } from 'react-native'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { modal_actions } from '../../store/modal.slice'
 import { CloseIcon } from '../../Icons'
 import colors from 'tailwindcss/colors'
+import { useMutate } from '../../hooks/useMutate'
+import { KEYS } from '../../utils'
+import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 import uuid from 'react-native-uuid'
+
+const taskSchema = yup.object({
+  title: yup
+    .string()
+    .required('Insira o título')
+    .min(2, 'O título deve ter pelo menos 2 caracteres'),
+  tag: yup.string().required('Seleccione o Tipo de armazém'),
+})
 
 export const TaskForm = () => {
   const windowHeight = Dimensions.get('window').height
   const isTaskFormOpen = useAppSelector((state) => state.modals.isTaskFormOpen)
   const dispatch = useAppDispatch()
 
-  const [tag, setTag] = useState<string>()
-  const [title, setTitle] = useState<string>()
+  const { mutate, isLoading } = useMutate(KEYS.tasks)
 
-  async function handleCreateNewTask() {
-    const task = { title, tag };
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(taskSchema),
+  })
+
+  const onSubmit = async ({ title, tag }: yup.InferType<typeof taskSchema>) => {
+    const task = {
+      id: uuid.v4(),
+      title,
+      tag,
+      nrPlayed: 0,
+    }
+    const res = await mutate(task)
+    if (res) {
+      Alert.alert('Success', 'Task created')
+      reset()
+    } else {
+      Alert.alert('Error', 'Something went wrong')
+    }
   }
 
   return (
@@ -52,28 +86,59 @@ export const TaskForm = () => {
           <View>
             <View className="mb-2">
               <Text className="py-1">Task Name</Text>
-              <TextInput
-                cursorColor={colors.gray[500]}
-                className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400 "
-                placeholder="Task Name"
-                onChangeText={setTitle}
+              <Controller
+                control={control}
+                rules={{
+                  required: true,
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    cursorColor={colors.gray[500]}
+                    className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400 "
+                    placeholder="Task Name"
+                    onBlur={onBlur}
+                    onChangeText={onChange}
+                  />
+                )}
+                name="title"
               />
+              {errors.title && (
+                <Text className="text-red-400">Required field</Text>
+              )}
             </View>
             <View className="mb-2">
               <Text className="py-1">Select a tag</Text>
-              <TextInput
-                cursorColor={colors.gray[500]}
-                className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400"
-                placeholder="Category name"
-                onChangeText={setTag}
+              <Controller
+                control={control}
+                rules={{
+                  required: true,
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    cursorColor={colors.gray[500]}
+                    className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400"
+                    placeholder="Category name"
+                    onBlur={onBlur}
+                    onChangeText={onChange}
+                  />
+                )}
+                name="tag"
               />
+              {errors.tag && (
+                <Text className="text-red-400">Required field</Text>
+              )}
             </View>
             <View>
               <TouchableOpacity
                 activeOpacity={0.7}
                 className="mt-4 items-center rounded-lg bg-purple-600 p-3"
+                onPress={handleSubmit(onSubmit)}
               >
-                <Text className="font-semibold text-white">Add Task</Text>
+                {isLoading ? (
+                  <ActivityIndicator color={colors.gray[200]} />
+                ) : (
+                  <Text className="font-semibold text-white">Add Task</Text>
+                )}
               </TouchableOpacity>
 
               <TouchableOpacity
