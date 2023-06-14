@@ -1,5 +1,5 @@
 export type TrackerProps = {
-  _id: string
+  id: string
   start_time: Date
   end_time: Date
 }

@@ -12,7 +12,7 @@ import colors from 'tailwindcss/colors'
 import { TrackerProps } from '../@types'
 
 export const Historic = () => {
-  const [trakers, setTrackers] = useState<TrackerProps[]>()
+  const [trakers, setTrackers] = useState<TrackerProps[]>([])
 
   return (
     <SafeAreaView>
@@ -35,7 +35,7 @@ export const Historic = () => {
           </View>
           <View className="mt-5">
             {trakers.map((item, key) => (
-              <TrackedTimeCard key={'#Act' + item._id + key} />
+              <TrackedTimeCard key={'#Act' + item.id + key} />
             ))}
           </View>
         </Container>

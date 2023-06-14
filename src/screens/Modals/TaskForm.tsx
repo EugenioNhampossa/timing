@@ -12,7 +12,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks'
 import { modal_actions } from '../../store/modal.slice'
 import { CloseIcon } from '../../Icons'
 import colors from 'tailwindcss/colors'
-import { getRealm } from '../../db/realm'
 import uuid from 'react-native-uuid'
 
 export const TaskForm = () => {
@@ -24,22 +23,7 @@ export const TaskForm = () => {
   const [title, setTitle] = useState<string>()
 
   async function handleCreateNewTask() {
-    const realm = await getRealm()
-    try {
-      realm.write(() => {
-        realm.create('Task', {
-          _id: uuid.v4(),
-          title,
-          tag_id: tag,
-        })
-      })
-      Alert.alert('Success', 'Task created')
-    } catch (error) {
-      Alert.alert('Error', 'Something went rong')
-      console.log(error)
-    } finally {
-      realm.close();
-    }
+    const task = { title, tag };
   }
 
   return (

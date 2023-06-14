@@ -8,8 +8,8 @@ import {
 } from 'react-native'
 import { TaskCard, Container } from '../components'
 import { FunnelIcon, MagnifyingGlassIcon } from '../Icons'
-import { tags } from './Home'
 import colors from 'tailwindcss/colors'
+import { TAGS } from '../utils/tags'
 
 export const TaskList = () => {
   return (
@@ -32,7 +32,7 @@ export const TaskList = () => {
             </TouchableOpacity>
           </View>
           <View className="mt-5">
-            {tags.map((item, key) => (
+            {TAGS.map((item, key) => (
               <TaskCard key={'#Act' + item.id} />
             ))}
           </View>
