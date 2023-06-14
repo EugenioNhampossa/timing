@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
+  ActivityIndicator,
+  Alert,
   SafeAreaView,
   ScrollView,
   TextInput,
@@ -9,9 +11,18 @@ import {
 import { TaskCard, Container } from '../components'
 import { FunnelIcon, MagnifyingGlassIcon } from '../Icons'
 import colors from 'tailwindcss/colors'
-import { TAGS } from '../utils/tags'
+import { useFetch } from '../hooks/useFetch'
+import { KEYS } from '../utils'
 
 export const TaskList = () => {
+  const { data, error, isLoading, refetch } = useFetch(KEYS.tasks)
+
+  useEffect(() => {
+    if (error) {
+      Alert.alert('Error', 'Unable to load data')
+    }
+  }, [data])
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -31,11 +42,17 @@ export const TaskList = () => {
               <FunnelIcon className="" />
             </TouchableOpacity>
           </View>
-          <View className="mt-5">
-            {TAGS.map((item, key) => (
-              <TaskCard key={'#Act' + item.id} />
-            ))}
-          </View>
+          {isLoading ? (
+            <View className="h-full items-center justify-center">
+              <ActivityIndicator color={colors.purple[500]} size="large" />
+            </View>
+          ) : (
+            <View className="mt-5">
+              {data.map((item, key) => (
+                <TaskCard key={'#Act' + item.id} item={item} />
+              ))}
+            </View>
+          )}
         </Container>
       </ScrollView>
     </SafeAreaView>
