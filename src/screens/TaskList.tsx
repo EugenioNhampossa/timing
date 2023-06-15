@@ -14,7 +14,7 @@ import colors from 'tailwindcss/colors'
 import { useFetch } from '../hooks/useFetch'
 import { KEYS } from '../utils'
 
-export const TaskList = () => {
+export const TaskList = ({ navigation }) => {
   const { data, error, isLoading, refetch } = useFetch(KEYS.tasks)
 
   useEffect(() => {
@@ -22,6 +22,10 @@ export const TaskList = () => {
       Alert.alert('Error', 'Unable to load data')
     }
   }, [data])
+
+  navigation.addListener('focus', () => {
+    refetch()
+  })
 
   return (
     <SafeAreaView>

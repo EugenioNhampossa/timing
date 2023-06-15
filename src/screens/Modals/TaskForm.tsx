@@ -19,6 +19,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import uuid from 'react-native-uuid'
+import { Select } from '../../components'
 
 const taskSchema = yup.object({
   title: yup
@@ -113,14 +114,8 @@ export const TaskForm = () => {
                 rules={{
                   required: true,
                 }}
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    cursorColor={colors.gray[500]}
-                    className="rounded-lg border-2 border-transparent bg-slate-200 px-3 py-1 focus:border-gray-400"
-                    placeholder="Category name"
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                  />
+                render={({ field: { onChange } }) => (
+                  <Select onChange={onChange} />
                 )}
                 name="tag"
               />

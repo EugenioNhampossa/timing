@@ -5,10 +5,10 @@ import {
   CodeBracketIcon,
   MonitorIcon,
 } from '../Icons'
-//c9758c7c-d73c-44b1-a76a-a32c4f981938
+
 export const TAGS = [
   {
-    id: '1',
+    id: 'c9758c7c-d73c-44b1-a76a-a32c4f981938',
     title: 'Coding',
     icon: <CodeBracketIcon />,
     color: 'red',

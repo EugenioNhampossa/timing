@@ -2,11 +2,12 @@ import { styled } from 'nativewind'
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { PlayIcon } from '../Icons'
-import { TAGS, colorView } from '../utils'
+import { TAGS, colorView, tagView } from '../utils'
 
 const StyledTaskCard = ({ item }) => {
   const tag = TAGS.find((tag) => tag.id === item.tag)
   const view = colorView(tag.color, tag.icon)
+  const viewTag = tagView(tag.color, tag.title)
   return (
     <>
       <View className="mb-4 flex-row items-end justify-between rounded-lg bg-white px-7 py-4">

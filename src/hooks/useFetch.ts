@@ -10,7 +10,7 @@ export const useFetch = (key: string) => {
     setIsLoading(true)
     try {
       const value = await AsyncStorage.getItem(key)
-      const jSonValue = value != null ? JSON.parse(value) : null
+      const jSonValue = value != null ? JSON.parse(value) : []
       setData(jSonValue)
     } catch (error) {
       setError(error)

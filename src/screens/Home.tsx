@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Text,
   TouchableOpacity,
   FlatList,
   ScrollView,
+  Alert,
+  ActivityIndicator,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Container } from '../components/Layout/Container'
@@ -13,10 +15,22 @@ import { TagCard } from '../components/TagCard'
 import { TaskCard } from '../components'
 import { MoreIcon } from '../Icons'
 import { TAGS } from '../utils/tags'
-import { TaskProps } from '../@types'
+import colors from 'tailwindcss/colors'
+import { useFetch } from '../hooks/useFetch'
+import { KEYS } from '../utils'
 
 export const Home = ({ navigation }) => {
-  const [tasks, setTask] = useState<TaskProps[]>([])
+  const { data, error, isLoading, refetch } = useFetch(KEYS.tasks)
+
+  useEffect(() => {
+    if (error) {
+      Alert.alert('Error', 'Unable to load data')
+    }
+  }, [data])
+
+  navigation.addListener('focus', () => {
+    refetch()
+  })
 
   return (
     <>
@@ -64,9 +78,20 @@ export const Home = ({ navigation }) => {
                     <Text className="font-semibold">See all</Text>
                   </TouchableOpacity>
                 </View>
-                {tasks.map((item, key) => (
-                  <TaskCard key={'#Act' + item.id} item={item} />
-                ))}
+                {isLoading ? (
+                  <View className="h-full items-center justify-center">
+                    <ActivityIndicator
+                      color={colors.purple[500]}
+                      size="large"
+                    />
+                  </View>
+                ) : (
+                  <View className="mt-5">
+                    {data.map((item, key) => (
+                      <TaskCard key={'#Act' + item.id} item={item} />
+                    ))}
+                  </View>
+                )}
               </View>
             </View>
           </Container>
