@@ -65,7 +65,7 @@ export const Home = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
                 {tasks.map((item, key) => (
-                  <TaskCard key={'#Act' + item._id} />
+                  <TaskCard key={'#Act' + item.id} item={item} />
                 ))}
               </View>
             </View>

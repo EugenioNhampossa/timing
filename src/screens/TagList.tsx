@@ -25,7 +25,7 @@ export const TagList = () => {
             {TAGS.map((item: TagProps, key) => (
               <View className="mt-5">
                 <TagCard
-                  key={'#tag' + item.id + key}
+                  key={'#tag' + item.id +item.title+ key}
                   icon={item.icon}
                   title={item.title}
                   color={item.color}

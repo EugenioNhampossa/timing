@@ -2,6 +2,7 @@ import { styled } from 'nativewind'
 import React from 'react'
 import { View, Text } from 'react-native'
 import { BookIcon } from '../Icons'
+import { colorView } from '../utils'
 
 const StyledTrackedTimeCard = ({ ...rest }) => {
   return (

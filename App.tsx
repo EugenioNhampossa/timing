@@ -20,8 +20,6 @@ import { TimerModal } from './src/screens/Modals/TimerModal'
 import { Historic } from './src/screens/Historic'
 import { TaskList } from './src/screens/TaskList'
 import { Header } from './src/components/Layout/Header'
-import { createRealmContext } from '@realm/react'
-
 const HomeStack = createNativeStackNavigator()
 
 function HomeStackScreen() {
@@ -66,7 +64,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer theme={MyTheme}>
-        <StatusBar translucent style="auto" />
+        <StatusBar translucent style="inverted" />
         <TaskForm />
         <TimerModal />
         <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
